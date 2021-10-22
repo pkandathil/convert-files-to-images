@@ -3,6 +3,7 @@ A PoC to convert different files types to images.
 You need to have the following installed on your computer:
 - `brew install imagemagick`
 - `brew install graphicsmagick`
+- Install Libreoffice as well. Had to do it manually for OSX from here: https://www.libreoffice.org/download/download/
 
 ## Setup dev environment
 - `npm install`
