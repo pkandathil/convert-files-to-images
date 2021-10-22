@@ -1,8 +1,18 @@
-const docxConverter = require('docx-pdf')
+const libre = require('libreoffice-convert')
 
-docxConverter('../data/input.docx','../data/output.pdf',(err,result) => {
-  if(err){
-    console.log(err)
+const path = require('path')
+const fs = require('fs')
+
+const extend = '.pdf'
+const enterPath = path.join(__dirname, '/../data/input.docx')
+const outputPath = path.join(__dirname, `/../data/output${extend}`)
+
+// Read file
+const file = fs.readFileSync(enterPath)
+// Convert it to pdf format with undefined filter (see Libreoffice doc about filter)
+libre.convert(file, extend, undefined, (err, done) => {
+  if (err) {
+    console.log(`Error converting file: ${err}`)
   }
-  console.log('PDF Generated')
+  fs.writeFileSync(outputPath, done)
 })
